@@ -6,21 +6,21 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#fffdf8">
 <title>NextStep | Total Knee Replacement Rehabilitation</title>
-<link rel="icon" type="image/png" href="assets/nextstep-icon.png">
+<link rel="icon" type="image/png" href="assets/nextstep-icon-clay.png">
 <style>
   :root{
-    --ink:#242329;
-    --ink-2:#45434a;
+    --ink:#1b1b1d;
+    --ink-2:#39383c;
     --paper:#fffdf8;
-    --paper-2:#fff0e6;
-    --line:#e9dfd7;
+    --paper-2:#f8efec;
+    --line:#e8dfdb;
     --bone:#ffffff;
-    --pulse:#f15a29;
-    --pulse-deep:#c7411b;
-    --go:#f15a29;
-    --go-soft:#fff0e6;
-    --warn:#e48024;
-    --muted:#58545a;
+    --pulse:#b8574b;
+    --pulse-deep:#963c35;
+    --go:#b8574b;
+    --go-soft:#f8efec;
+    --warn:#9b6b3b;
+    --muted:#4e4b50;
     --shadow:0 6px 18px rgba(67,40,28,.08);
     --r:14px;
   }
@@ -58,14 +58,14 @@
   .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;box-shadow:var(--shadow)}
   .seg button{flex:1;min-width:0;min-height:54px;border:0;background:transparent;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);
     padding:8px 3px;border-radius:10px;cursor:pointer;transition:.18s}
-  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(241,90,41,.22)}
+  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(184,87,75,.18)}
 
   .list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
   .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;
     display:flex;flex-direction:row;align-items:center;gap:12px;min-height:0;transition:.16s;position:relative;overflow:hidden;
     width:100%;font:inherit;color:inherit;text-align:left}
-  .card:hover{border-color:#f5a27e;box-shadow:var(--shadow)}
-  .card:focus-visible,.seg button:focus-visible{outline:3px solid #f69867;outline-offset:2px}
+  .card:hover{border-color:#d4a49c;box-shadow:var(--shadow)}
+  .card:focus-visible,.seg button:focus-visible{outline:3px solid #d07062;outline-offset:2px}
   .card:active{transform:scale(.985)}
   .card .ic{width:52px;height:52px;flex:0 0 auto;border-radius:10px;background:var(--paper-2);
     display:grid;place-items:center}
@@ -76,7 +76,7 @@
     background:var(--paper-2);padding:5px 8px;border-radius:5px;white-space:nowrap;align-self:flex-start}
   .card.tracked::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pulse)}
 
-  .safety{margin:30px 0 0;padding:18px 20px;background:#fff8f1;border:1px solid #f3e2d3;border-left:4px solid var(--pulse);border-radius:var(--r);
+  .safety{margin:30px 0 0;padding:18px 20px;background:#faf8f5;border:1px solid #e8e1db;border-left:4px solid var(--pulse);border-radius:var(--r);
     font-size:14px;line-height:1.55;color:var(--ink-2)}
   .safety b{color:var(--ink)}
   .safety a{color:var(--pulse-deep);font-weight:700;text-underline-offset:2px}
@@ -98,19 +98,19 @@
   .exhead .back{width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.12);
     backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
   .exhead .t{color:#fff;padding-top:2px}
-  .exhead .t .eyebrow{color:#f0a07f}
+  .exhead .t .eyebrow{color:#f4b8ab}
   .exhead .t h2{margin:2px 0 0;font-size:18px;font-weight:650;font-family:inherit;letter-spacing:-.01em}
 
   /* big live angle gauge */
   .gauge{position:absolute;z-index:5;left:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
     border-radius:16px;padding:14px 16px;min-width:128px;color:#fff;transition:.2s}
-  .gauge.inrange{background:rgba(241,90,41,.4);border-color:rgba(255,187,137,.6)}
+  .gauge.inrange{background:rgba(184,87,75,.42);border-color:rgba(244,184,171,.6)}
   .gauge .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
   .gauge .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
   .gauge .val sup{font-size:18px;vertical-align:super;opacity:.7;margin-left:1px}
   .gauge .sub{font-size:11px;opacity:.8;margin-top:5px}
-  .gauge .peak{color:#ffd9c4}
+  .gauge .peak{color:#f5d1cc}
 
   /* rep counter pill */
   .reps{position:absolute;z-index:5;right:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
@@ -126,7 +126,7 @@
     display:flex;align-items:center;gap:12px;min-height:62px}
   .coach .dot{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:0 0 auto;
     box-shadow:0 0 0 0 rgba(192,144,42,.4);animation:pulse 1.6s infinite}
-  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(241,90,41,.4)}
+  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(184,87,75,.4)}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,144,42,.35)}70%{box-shadow:0 0 0 9px rgba(192,144,42,0)}100%{box-shadow:0 0 0 0 rgba(192,144,42,0)}}
   .coach .msg{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--ink)}
   .coach .msg b{font-weight:700}
@@ -134,7 +134,7 @@
   /* target band on the side */
   .target{position:absolute;z-index:4;top:50%;right:14px;transform:translateY(-50%);
     width:8px;height:200px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
-  .target .band{position:absolute;left:0;right:0;background:rgba(241,90,41,.55);border-top:1px solid #ffc19e;border-bottom:1px solid #ffc19e}
+  .target .band{position:absolute;left:0;right:0;background:rgba(184,87,75,.55);border-top:1px solid #f4b8ab;border-bottom:1px solid #f4b8ab}
   .target .needle{position:absolute;left:-3px;right:-3px;height:3px;background:var(--pulse);border-radius:2px;transition:.12s}
 
   .joint-angle{position:absolute;z-index:6;display:none;min-width:72px;padding:7px 10px;border-radius:9px;
@@ -179,7 +179,7 @@
   .done h2{color:#fff;font-family:inherit;font-size:26px;margin:0;font-weight:600}
   .done p{color:rgba(255,255,255,.75);font-size:14px;margin:2px 0 0}
   .done .stat{color:#fff;font-size:14px;margin-top:12px;opacity:.9}
-  .done .stat b{color:#f0a07f;font-size:18px}
+  .done .stat b{color:#f4b8ab;font-size:18px}
   .done button{margin-top:22px;background:var(--pulse);color:#fff;border:none;font-family:inherit;
     font-size:15px;font-weight:650;padding:14px 30px;border-radius:13px;cursor:pointer}
 
@@ -192,7 +192,7 @@
   <!-- ===================== HOME ===================== -->
   <main class="home" id="home">
     <div class="brandbar">
-      <img class="mark" src="assets/nextstep-icon.png" alt="">
+      <img class="mark" src="assets/nextstep-icon-clay.png" alt="">
       <div><b>NextStep</b><span>Total Knee Replacement - Guided Rehabilitation</span></div>
     </div>
 
@@ -652,7 +652,7 @@ const BONES=[[11,12],[11,23],[12,24],[23,24],[23,25],[25,27],[27,31],[24,26],[26
 function drawSkeleton(lm,s,ok,estimated){
   const W=cv.width,H=cv.height;
   ctx.lineWidth=Math.max(3,W*0.006);
-  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(255,166,108,.9)':'rgba(255,255,255,.5)');
+  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(244,184,171,.9)':'rgba(255,255,255,.5)');
   BONES.forEach(([a,b])=>{
     if(!vis(lm,a)||!vis(lm,b))return;
     ctx.beginPath();ctx.moveTo(lm[a].x*W,lm[a].y*H);ctx.lineTo(lm[b].x*W,lm[b].y*H);ctx.stroke();
@@ -662,7 +662,7 @@ function drawSkeleton(lm,s,ok,estimated){
     if(!vis(lm,i))return;
     ctx.beginPath();
     ctx.arc(lm[i].x*W,lm[i].y*H, idx===1?W*0.018:W*0.012,0,7);
-    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#ffab75') : 'rgba(255,255,255,.85)';
+    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#f4b8ab') : 'rgba(255,255,255,.85)';
     ctx.fill();
   });
 }
