@@ -4,80 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0e1726">
-<title>Knee Recovery — TKR Rehab Guide</title>
+<meta name="theme-color" content="#063b4a">
+<title>KneePath | Prototype</title>
+<link rel="icon" type="image/png" href="assets/kneepath-icon.png">
 <style>
   :root{
-    --ink:#0e1726;
-    --ink-2:#1b2940;
-    --paper:#f5f2ec;
-    --paper-2:#ece7dc;
-    --line:#d8d1c4;
-    --bone:#fbf9f4;
-    --pulse:#e8642f;       /* terracotta-clay accent */
-    --pulse-deep:#c44e1f;
-    --go:#2f7d5b;          /* in-range green */
+    --ink:#102b39;
+    --ink-2:#214350;
+    --paper:#f3f7f8;
+    --paper-2:#e8eff1;
+    --line:#cbdadd;
+    --bone:#ffffff;
+    --pulse:#087c86;
+    --pulse-deep:#07616c;
+    --go:#267954;
     --go-soft:#dcefe2;
-    --warn:#c0902a;
-    --muted:#6f6857;
-    --shadow:0 10px 30px -12px rgba(14,23,38,.4);
-    --r:18px;
+    --warn:#b77816;
+    --muted:#51636b;
+    --shadow:0 2px 10px rgba(16,43,57,.08);
+    --r:10px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;height:100%}
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-feature-settings:"ss01","cv01";
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
     overscroll-behavior:none;
     -webkit-font-smoothing:antialiased;
   }
   /* type scale */
-  .display{font-family:"Fraunces","Georgia",serif;font-weight:600;letter-spacing:-.02em;line-height:1.02}
-  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pulse-deep)}
+  .display{font-family:inherit;font-weight:750;letter-spacing:-.035em;line-height:1.08}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
   .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 
   /* App shell */
-  #app{max-width:520px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;position:relative}
+  #app{max-width:920px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;position:relative}
 
   /* ---------- HOME ---------- */
-  .home{padding:calc(env(safe-area-inset-top) + 26px) 20px 120px}
-  .brandbar{display:flex;align-items:center;gap:10px;margin-bottom:30px}
-  .mark{width:34px;height:34px;border-radius:9px;background:var(--ink);position:relative;flex:0 0 auto}
-  .mark::before{content:"";position:absolute;inset:9px 8px;border:2.5px solid var(--paper);border-radius:2px 2px 9px 9px;border-top:none}
-  .mark::after{content:"";position:absolute;top:7px;left:50%;width:2.5px;height:8px;background:var(--paper);transform:translateX(-50%);border-radius:2px}
-  .brandbar b{font-size:14px;font-weight:700;letter-spacing:-.01em}
-  .brandbar span{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .home{padding:calc(env(safe-area-inset-top) + 28px) 28px 80px}
+  .brandbar{display:flex;align-items:center;gap:12px;margin-bottom:52px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .mark{width:40px;height:40px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+  .brandbar b{font-size:18px;font-weight:750;letter-spacing:-.025em}
+  .brandbar span{font-size:11px;color:var(--pulse-deep);display:block;margin-top:2px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 
   .hero{margin-bottom:8px}
-  .hero h1{font-size:clamp(34px,11vw,46px);margin:0 0 14px}
+  .hero h1{font-size:clamp(30px,5vw,44px);margin:0 0 14px;max-width:17ch}
   .hero h1 em{font-style:normal;color:var(--pulse-deep);position:relative}
-  .hero p{font-size:15.5px;line-height:1.5;color:var(--muted);margin:0;max-width:34ch}
+  .hero p{font-size:15px;line-height:1.55;color:var(--muted);margin:0;max-width:56ch}
 
-  .phasepick{margin:30px 0 8px}
+  .phasepick{margin:42px 0 8px}
   .phasepick .eyebrow{margin-bottom:12px;display:block}
-  .seg{display:flex;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px}
+  .seg{display:flex;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0;gap:0}
   .seg button{flex:1;border:none;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);
-    padding:10px 4px;border-radius:10px;cursor:pointer;transition:.18s}
-  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bone);box-shadow:var(--shadow)}
+    padding:13px 4px;border-radius:0;border-bottom:3px solid transparent;cursor:pointer;transition:.18s}
+  .seg button[aria-pressed="true"]{background:transparent;color:var(--pulse-deep);border-bottom-color:var(--pulse-deep);box-shadow:none}
 
-  .list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
-  .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:18px;cursor:pointer;
-    display:flex;align-items:center;gap:16px;transition:.16s;position:relative;overflow:hidden}
+  .list{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;
+    display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:210px;transition:.16s;position:relative;overflow:hidden}
   .card:active{transform:scale(.985)}
-  .card .ic{width:48px;height:48px;flex:0 0 auto;border-radius:12px;background:var(--paper-2);
+  .card .ic{width:44px;height:44px;flex:0 0 auto;border-radius:8px;background:var(--paper-2);
     display:grid;place-items:center}
   .card .ic svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin:0 0 3px;font-size:16px;font-weight:650;letter-spacing:-.01em}
   .card p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.35}
-  .card .tag{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--pulse-deep);
-    background:#f7e5dc;padding:5px 8px;border-radius:7px;white-space:nowrap;align-self:flex-start}
-  .card.tracked::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--pulse)}
+  .card .tag{margin-top:auto;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--pulse-deep);
+    background:var(--paper-2);padding:5px 8px;border-radius:5px;white-space:nowrap;align-self:flex-start}
+  .card.tracked::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pulse)}
 
-  .safety{margin:28px 0 0;padding:16px;background:#fcf4e8;border:1px solid #ecdcbf;border-radius:14px;
-    font-size:12.5px;line-height:1.5;color:#7a6328}
-  .safety b{color:#5e4c1c}
+  .safety{margin:30px 0 0;padding:18px 20px;background:#ffffff;border:1px solid var(--line);border-left:3px solid var(--pulse);border-radius:var(--r);
+    font-size:13px;line-height:1.55;color:var(--muted)}
+  .safety b{color:var(--ink)}
+  .safety a{color:var(--pulse-deep);font-weight:700;text-underline-offset:2px}
+  .sitefooter{margin-top:28px;font-size:11px;color:var(--muted)}
+  .sitefooter a{color:inherit}
+  @media(max-width:650px){.home{padding:calc(env(safe-area-inset-top) + 22px) 20px 70px}.brandbar{margin-bottom:36px}.phasepick{margin-top:34px}.list{grid-template-columns:1fr}.card{min-height:0;flex-direction:row;align-items:center;padding:16px}.card .tag{margin-top:0;margin-left:auto}}
 
   /* ---------- EXERCISE ---------- */
   .ex{position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;z-index:20;
@@ -94,7 +96,7 @@
     backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
   .exhead .t{color:#fff;padding-top:2px}
   .exhead .t .eyebrow{color:#f0a07f}
-  .exhead .t h2{margin:2px 0 0;font-size:18px;font-weight:650;font-family:"Fraunces",serif;letter-spacing:-.01em}
+  .exhead .t h2{margin:2px 0 0;font-size:18px;font-weight:650;font-family:inherit;letter-spacing:-.01em}
 
   /* big live angle gauge */
   .gauge{position:absolute;z-index:5;left:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
@@ -102,7 +104,7 @@
     border-radius:16px;padding:14px 16px;min-width:128px;color:#fff;transition:.2s}
   .gauge.inrange{background:rgba(47,125,91,.42);border-color:rgba(120,230,170,.5)}
   .gauge .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
-  .gauge .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:"Fraunces",serif}
+  .gauge .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
   .gauge .val sup{font-size:18px;vertical-align:super;opacity:.7;margin-left:1px}
   .gauge .sub{font-size:11px;opacity:.8;margin-top:5px}
   .gauge .peak{color:#ffd9c4}
@@ -112,7 +114,7 @@
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
     border-radius:16px;padding:14px 16px;color:#fff;text-align:center;min-width:96px}
   .reps .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
-  .reps .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:"Fraunces",serif}
+  .reps .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
   .reps .val small{font-size:18px;opacity:.55}
 
   /* coaching strip */
@@ -139,7 +141,7 @@
   .veil .spin{width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,.18);
     border-top-color:var(--pulse);animation:spin 1s linear infinite;margin-bottom:14px}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .veil h3{color:#fff;font-family:"Fraunces",serif;font-size:20px;margin:0;font-weight:600}
+  .veil h3{color:#fff;font-family:inherit;font-size:20px;margin:0;font-weight:600}
   .veil p{color:rgba(255,255,255,.7);font-size:13.5px;margin:4px 0 0;max-width:30ch;line-height:1.45}
   .veil button{margin-top:18px;background:var(--pulse);color:#fff;border:none;font-family:inherit;
     font-size:15px;font-weight:650;padding:14px 28px;border-radius:13px;cursor:pointer}
@@ -151,7 +153,7 @@
     transform:translateY(100%);transition:transform .3s ease}
   .brief.up{transform:none}
   .brief .grip{width:38px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 16px}
-  .brief h3{margin:0 0 4px;font-family:"Fraunces",serif;font-size:21px;font-weight:600}
+  .brief h3{margin:0 0 4px;font-family:inherit;font-size:21px;font-weight:600}
   .brief .meta{font-size:12.5px;color:var(--pulse-deep);font-weight:600;margin-bottom:14px}
   .brief ol{margin:0 0 18px;padding-left:20px;color:var(--ink)}
   .brief ol li{font-size:13.5px;line-height:1.55;margin-bottom:7px}
@@ -165,7 +167,7 @@
   .done.show{display:flex}
   .done .ring{width:88px;height:88px;border-radius:50%;border:4px solid var(--go);display:grid;place-items:center;margin-bottom:8px}
   .done .ring svg{width:42px;height:42px;stroke:var(--go);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-  .done h2{color:#fff;font-family:"Fraunces",serif;font-size:26px;margin:0;font-weight:600}
+  .done h2{color:#fff;font-family:inherit;font-size:26px;margin:0;font-weight:600}
   .done p{color:rgba(255,255,255,.75);font-size:14px;margin:2px 0 0}
   .done .stat{color:#fff;font-size:14px;margin-top:12px;opacity:.9}
   .done .stat b{color:#f0a07f;font-size:18px}
@@ -174,8 +176,6 @@
 
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -183,21 +183,21 @@
   <!-- ===================== HOME ===================== -->
   <main class="home" id="home">
     <div class="brandbar">
-      <div class="mark"></div>
-      <div><b>Knee Recovery</b><span>Total knee replacement · guided rehab</span></div>
+      <img class="mark" src="assets/kneepath-icon.png" alt="">
+      <div><b>KneePath</b><span>Prototype</span></div>
     </div>
 
     <section class="hero">
-      <h1 class="display">Move with<br><em>confidence.</em></h1>
-      <p>Your camera watches your form and counts every rep — so each session works your new knee exactly as your team intended.</p>
+      <h1 class="display">Guided exercises for knee recovery.</h1>
+      <p>Choose your stage to see the exercises and start a guided session.</p>
     </section>
 
     <section class="phasepick">
       <span class="eyebrow">Where are you in recovery?</span>
       <div class="seg" id="seg" role="group" aria-label="Recovery phase">
-        <button data-phase="1" aria-pressed="true">Week 0–1</button>
-        <button data-phase="2" aria-pressed="false">Week 1–4</button>
-        <button data-phase="3" aria-pressed="false">Week 4–8</button>
+        <button data-phase="1" aria-pressed="true">Week 0 to 1</button>
+        <button data-phase="2" aria-pressed="false">Week 1 to 4</button>
+        <button data-phase="3" aria-pressed="false">Week 4 to 8</button>
         <button data-phase="4" aria-pressed="false">Week 8+</button>
       </div>
     </section>
@@ -205,8 +205,9 @@
     <section class="list" id="list"><!-- exercises injected --></section>
 
     <div class="safety">
-      <b>Listen to your knee.</b> Mild discomfort is normal; sharp pain is not. Stop and contact your surgeon if you notice fever, calf pain, spreading numbness, or wound drainage. This guide supports — it doesn't replace — your physiotherapist.
+      <b>When to get advice.</b> Use the exercises recommended by your physiotherapist. Stop if an exercise is very painful or causes a marked increase in swelling, and ask your physiotherapist or medical team for advice before continuing. Seek urgent medical advice if you have a fever, wound discharge or a painful, swollen calf. This app is general guidance and does not replace your own care plan. <a href="https://www.nhs.uk/tests-and-treatments/knee-replacement/complications/" target="_blank" rel="noopener noreferrer">NHS advice</a>
     </div>
+    <footer class="sitefooter">© 2026 Vivek and Matt McCann. <a href="LICENSE">MIT licence</a>.</footer>
   </main>
 
   <!-- ===================== EXERCISE OVERLAY ===================== -->
@@ -227,8 +228,8 @@
 
       <div class="gauge" id="gauge" style="display:none">
         <div class="lab" id="gaugeLab">Knee bend</div>
-        <div class="val"><span class="num" id="angleVal">—</span><sup>°</sup></div>
-        <div class="sub peak">Best <span class="num" id="peakVal">—</span>°</div>
+        <div class="val"><span class="num" id="angleVal">?</span><sup>°</sup></div>
+        <div class="sub peak">Best <span class="num" id="peakVal">?</span>°</div>
       </div>
 
       <div class="reps" id="repsUI" style="display:none">
@@ -256,7 +257,7 @@
         <h3 id="briefTitle">Exercise</h3>
         <div class="meta" id="briefMeta"></div>
         <ol id="briefSteps"></ol>
-        <button class="start" id="briefStart">I'm in position — start</button>
+        <button class="start" id="briefStart">I'm in position. Start</button>
       </div>
 
       <!-- completion -->
@@ -293,11 +294,11 @@ const LIB = {
     {id:'heelslide', icon:'slide', title:'Heel slides', tag:'ROM', trackType:'flexion',
       blurb:'Gently rebuild your bend by sliding the heel toward you.',
       goal:110, reps:10, gaugeLab:'Knee bend',
-      steps:['Lie on your back, operated leg straight.','Slide your heel toward your buttock, bending the knee as far as is comfortable.','Slide back out to straight to complete one rep.','Never push through sharp pain — the bar shows your best bend.']},
+      steps:['Lie on your back, operated leg straight.','Slide your heel toward your buttock, bending the knee as far as is comfortable.','Slide back out to straight to complete one rep.','Never push through sharp pain. The bar shows your best bend.']},
     {id:'slr', icon:'lift', title:'Straight leg raise', tag:'Strength', trackType:'slr',
       blurb:'Lift the whole leg with the knee locked straight.',
       goal:35, reps:10, gaugeLab:'Leg lift',
-      steps:['Lie flat. Bend your good knee, foot on the bed.','Keep the operated knee fully straight and lift the leg ~30 cm.','Lower with control. Knee must stay locked — watch the coach.','If the knee bends, the rep won\'t count.']},
+      steps:['Lie flat. Bend your good knee, foot on the bed.','Keep the operated knee fully straight and lift the leg ~30 cm.','Lower with control. Keep the knee straight throughout.','If the knee bends, the rep won\'t count.']},
   ],
   2:[
     {id:'heelslide2', icon:'slide', title:'Heel slides', tag:'ROM', trackType:'flexion',
@@ -309,29 +310,29 @@ const LIB = {
       goal:170, holdSec:3, reps:12, gaugeLab:'Knee straightness',
       steps:['Sit tall on a firm chair, foot on the floor.','Straighten the operated knee until the leg is level.','Hold while the bar fills, then lower slowly.','Squeeze the thigh hard at the top.']},
     {id:'slr2', icon:'lift', title:'Straight leg raise', tag:'Strength', trackType:'slr',
-      blurb:'Build quad strength — knee stays straight throughout.',
+      blurb:'Build quad strength while keeping the knee straight.',
       goal:40, reps:12, gaugeLab:'Leg lift',
       steps:['Lie flat, good knee bent.','Lift the straight operated leg, pause at the top.','Lower slowly. Keep the knee locked the whole way.','Aim for smooth, controlled lifts.']},
   ],
   3:[
-    {id:'deepbend', icon:'slide', title:'Heel slide — deep bend', tag:'ROM', trackType:'flexion',
+    {id:'deepbend', icon:'slide', title:'Heel slide: deeper bend', tag:'ROM', trackType:'flexion',
       blurb:'Chase ≥110° while keeping full straightening.',
       goal:115, reps:12, gaugeLab:'Knee bend',
       steps:['Lie down, operated leg straight.','Pull the heel in firmly to maximise the bend.','Hold the deep bend a moment, then straighten fully.','The best-angle marker tracks your progress over weeks.']},
     {id:'minisquat', icon:'squat', title:'Mini squat', tag:'Strength', trackType:'flexion',
-      blurb:'Controlled standing bend — hold a counter for support.',
+      blurb:'Controlled standing bend. Hold a counter for support.',
       goal:60, reps:12, gaugeLab:'Knee bend',
       steps:['Stand sideways to the camera, holding a counter.','Bend both knees to a shallow squat (~60°).','Keep the knee tracking over the toes, not inward.','Stand tall to finish each rep.']},
     {id:'stepup', icon:'lift', title:'Forward step-up', tag:'Function', trackType:'flexion',
       blurb:'Step up onto a low step, driving through the operated leg.',
       goal:70, reps:10, gaugeLab:'Knee bend',
-      steps:['Stand sideways to the camera at a low step.','Step up leading with the operated leg.','Control the movement — no wobble or knee collapse inward.','Step down slowly to reset.']},
+      steps:['Stand sideways to the camera at a low step.','Step up leading with the operated leg.','Keep the movement controlled, without wobbling or letting the knee collapse inward.','Step down slowly to reset.']},
   ],
   4:[
     {id:'fullbend', icon:'slide', title:'Functional bend', tag:'ROM', trackType:'flexion',
       blurb:'Maintain ≥120° for daily tasks.',
       goal:120, reps:12, gaugeLab:'Knee bend',
-      steps:['Seated or lying, bend the knee as deeply as comfortable.','Aim for ≥120° — enough for stairs and sitting low.','Return to full straight each rep.','Stop short of sharp pain.']},
+      steps:['Seated or lying, bend the knee as deeply as comfortable.','Aim for the bend advised by your physiotherapist.','Return to full straight each rep.','Stop short of sharp pain.']},
     {id:'squat', icon:'squat', title:'Squat', tag:'Strength', trackType:'flexion',
       blurb:'Deeper, controlled squats with even weight.',
       goal:90, reps:12, gaugeLab:'Knee bend',
@@ -349,7 +350,7 @@ const ICONS={
   lift:'<path d="M5 20V8M5 8l5 3 9-5"/><circle cx="5" cy="5" r="2"/>',
   squat:'<path d="M8 4v6l-3 9M16 4v6l3 9M8 10h8"/>'
 };
-const PHASE_NAME={1:'Phase I · Week 0–1',2:'Phase II · Week 1–4',3:'Phase III · Week 4–8',4:'Phase IV · Week 8+'};
+const PHASE_NAME={1:'Phase I · Week 0 to 1',2:'Phase II · Week 1 to 4',3:'Phase III · Week 4 to 8',4:'Phase IV · Week 8+'};
 
 /* ---------------- State ---------------- */
 let phase=1, current=null, landmarker=null, running=false, rafId=null;
@@ -460,7 +461,7 @@ $('briefStart').onclick=()=>{
 
 function resetSession(){
   peak=0;reps=0;repPhase='ready';holdStart=0;inRangeStart=0;completed=false;smoothAngle=null;
-  $('repVal').textContent='0'; $('peakVal').textContent='—'; $('angleVal').textContent='—';
+  $('repVal').textContent='0'; $('peakVal').textContent='?'; $('angleVal').textContent='?';
 }
 
 /* target band geometry: map angle range to the vertical strip */
@@ -554,17 +555,17 @@ function handleMetric(raw,kind){
     if(inRange){
       if(!holdStart)holdStart=performance.now();
       const held=(performance.now()-holdStart)/1000;
-      coach(true,`Hold steady — <b>${held.toFixed(1)}s</b> / ${current.holdSec}s`);
+      coach(true,`Hold steady: <b>${held.toFixed(1)}s</b> / ${current.holdSec}s`);
       if(held>=current.holdSec){ countRep(); holdStart=0; }
     }else{
       holdStart=0;
       coach(false, kind==='straight'
         ? 'Push the knee straighter to reach the green zone.'
-        : 'A little more — get into the green band.');
+        : 'Move a little further into the green band.');
     }
   }else{ // rep-based flexion
     if(inRange && repPhase==='ready'){
-      coach(true,`Great depth — now return to ${kind==='bend'?'straight':'start'}.`);
+      coach(true,`Good. Return to ${kind==='bend'?'straight':'start'}.`);
       repPhase='returning';
     }else if(repPhase==='returning' && val < current.goal*0.35){
       countRep(); repPhase='ready';
@@ -581,9 +582,9 @@ function handleSLR(lift,kneeStraight){
   updateNeedle(val);
   if(!kneeStraight){ coach(false,'Keep the knee <b>locked straight</b> as you lift.'); return; }
   const inRange=val>=current.goal;
-  if(inRange && repPhase==='ready'){ coach(true,'Good height — lower slowly.'); repPhase='returning'; }
+  if(inRange && repPhase==='ready'){ coach(true,'Good height. Lower slowly.'); repPhase='returning'; }
   else if(repPhase==='returning' && val<8){ countRep(); repPhase='ready'; }
-  else if(repPhase==='ready'){ coach(true,'Knee locked — lift the leg into the green zone.'); }
+  else if(repPhase==='ready'){ coach(true,'Keep your knee straight as you lift into the green zone.'); }
 }
 
 function countRep(){
@@ -614,7 +615,7 @@ function drawSkeleton(lm,s,ok){
     if(!lm[i])return;
     ctx.beginPath();
     ctx.arc(lm[i].x*W,lm[i].y*H, idx===1?W*0.018:W*0.012,0,7);
-    ctx.fillStyle= idx===1 ? (ok?'#e8642f':'#fff') : 'rgba(255,255,255,.85)';
+    ctx.fillStyle= idx===1 ? (ok?'#087c86':'#fff') : 'rgba(255,255,255,.85)';
     ctx.fill();
   });
 }
@@ -623,7 +624,7 @@ function drawSkeleton(lm,s,ok){
 function finish(){
   completed=true; running=false; if(rafId)cancelAnimationFrame(rafId);
   navigator.vibrate&&navigator.vibrate([40,60,40]);
-  $('doneSub').textContent=`${current.title} — ${reps} reps logged.`;
+  $('doneSub').textContent=`${current.title}. ${reps} reps logged.`;
   const unit=current.trackType==='flexion'?'bend':(current.trackType==='slr'?'lift':'straightness');
   $('doneStat').innerHTML=`Best ${unit} this set <b>${peak}°</b>`;
   $('done').classList.add('show');
