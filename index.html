@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#063b4a">
-<title>KneePath | Prototype</title>
-<link rel="icon" type="image/png" href="assets/kneepath-icon.png">
+<meta name="theme-color" content="#fffdf8">
+<title>NextStep | Total Knee Replacement Rehabilitation</title>
+<link rel="icon" type="image/png" href="assets/nextstep-icon.png">
 <style>
   :root{
-    --ink:#102b39;
-    --ink-2:#214350;
-    --paper:#f3f7f8;
-    --paper-2:#e8eff1;
-    --line:#cbdadd;
+    --ink:#242329;
+    --ink-2:#45434a;
+    --paper:#fffdf8;
+    --paper-2:#fff0e6;
+    --line:#e9dfd7;
     --bone:#ffffff;
-    --pulse:#087c86;
-    --pulse-deep:#07616c;
-    --go:#267954;
-    --go-soft:#dcefe2;
-    --warn:#b77816;
-    --muted:#51636b;
-    --shadow:0 2px 10px rgba(16,43,57,.08);
-    --r:10px;
+    --pulse:#f15a29;
+    --pulse-deep:#c7411b;
+    --go:#f15a29;
+    --go-soft:#fff0e6;
+    --warn:#e48024;
+    --muted:#58545a;
+    --shadow:0 6px 18px rgba(67,40,28,.08);
+    --r:14px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;height:100%}
@@ -35,51 +35,54 @@
   }
   /* type scale */
   .display{font-family:inherit;font-weight:750;letter-spacing:-.035em;line-height:1.08}
-  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .eyebrow{font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse-deep)}
   .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 
   /* App shell */
-  #app{max-width:920px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;position:relative}
+  #app{max-width:520px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;position:relative}
 
   /* ---------- HOME ---------- */
-  .home{padding:calc(env(safe-area-inset-top) + 28px) 28px 80px}
-  .brandbar{display:flex;align-items:center;gap:12px;margin-bottom:52px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .home{padding:calc(env(safe-area-inset-top) + 28px) 20px 80px}
+  .brandbar{display:flex;align-items:center;gap:12px;margin-bottom:42px;padding-bottom:18px;border-bottom:1px solid var(--line)}
   .mark{width:40px;height:40px;border-radius:10px;object-fit:cover;flex:0 0 auto}
-  .brandbar b{font-size:18px;font-weight:750;letter-spacing:-.025em}
-  .brandbar span{font-size:11px;color:var(--pulse-deep);display:block;margin-top:2px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .brandbar b{font-size:21px;font-weight:750;letter-spacing:-.025em}
+  .brandbar span{font-size:12px;color:var(--ink-2);display:block;margin-top:3px;font-weight:600;letter-spacing:0;line-height:1.3}
 
   .hero{margin-bottom:8px}
-  .hero h1{font-size:clamp(30px,5vw,44px);margin:0 0 14px;max-width:17ch}
+  .hero h1{font-size:clamp(36px,8vw,48px);margin:0 0 16px;max-width:17ch}
   .hero h1 em{font-style:normal;color:var(--pulse-deep);position:relative}
-  .hero p{font-size:15px;line-height:1.55;color:var(--muted);margin:0;max-width:56ch}
+  .hero p{font-size:17px;line-height:1.55;color:var(--muted);margin:0;max-width:48ch}
 
-  .phasepick{margin:42px 0 8px}
+  .phasepick{margin:38px 0 8px}
   .phasepick .eyebrow{margin-bottom:12px;display:block}
-  .seg{display:flex;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0;gap:0}
-  .seg button{flex:1;border:none;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);
-    padding:13px 4px;border-radius:0;border-bottom:3px solid transparent;cursor:pointer;transition:.18s}
-  .seg button[aria-pressed="true"]{background:transparent;color:var(--pulse-deep);border-bottom-color:var(--pulse-deep);box-shadow:none}
+  .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;box-shadow:var(--shadow)}
+  .seg button{flex:1;min-width:0;min-height:54px;border:0;background:transparent;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);
+    padding:8px 3px;border-radius:10px;cursor:pointer;transition:.18s}
+  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(241,90,41,.22)}
 
-  .list{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
   .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;
-    display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:210px;transition:.16s;position:relative;overflow:hidden}
+    display:flex;flex-direction:row;align-items:center;gap:12px;min-height:0;transition:.16s;position:relative;overflow:hidden;
+    width:100%;font:inherit;color:inherit;text-align:left}
+  .card:hover{border-color:#f5a27e;box-shadow:var(--shadow)}
+  .card:focus-visible,.seg button:focus-visible{outline:3px solid #f69867;outline-offset:2px}
   .card:active{transform:scale(.985)}
-  .card .ic{width:44px;height:44px;flex:0 0 auto;border-radius:8px;background:var(--paper-2);
+  .card .ic{width:52px;height:52px;flex:0 0 auto;border-radius:10px;background:var(--paper-2);
     display:grid;place-items:center}
   .card .ic svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .card h3{margin:0 0 3px;font-size:16px;font-weight:650;letter-spacing:-.01em}
-  .card p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.35}
-  .card .tag{margin-top:auto;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--pulse-deep);
+  .card h3{margin:0 0 4px;font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .card p{margin:0;font-size:14px;color:var(--muted);line-height:1.4}
+  .card .tag{margin-left:auto;font-size:11px;font-weight:750;letter-spacing:.04em;color:var(--pulse-deep);
     background:var(--paper-2);padding:5px 8px;border-radius:5px;white-space:nowrap;align-self:flex-start}
   .card.tracked::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pulse)}
 
-  .safety{margin:30px 0 0;padding:18px 20px;background:#ffffff;border:1px solid var(--line);border-left:3px solid var(--pulse);border-radius:var(--r);
-    font-size:13px;line-height:1.55;color:var(--muted)}
+  .safety{margin:30px 0 0;padding:18px 20px;background:#fff8f1;border:1px solid #f3e2d3;border-left:4px solid var(--pulse);border-radius:var(--r);
+    font-size:14px;line-height:1.55;color:var(--ink-2)}
   .safety b{color:var(--ink)}
   .safety a{color:var(--pulse-deep);font-weight:700;text-underline-offset:2px}
   .sitefooter{margin-top:28px;font-size:11px;color:var(--muted)}
   .sitefooter a{color:inherit}
-  @media(max-width:650px){.home{padding:calc(env(safe-area-inset-top) + 22px) 20px 70px}.brandbar{margin-bottom:36px}.phasepick{margin-top:34px}.list{grid-template-columns:1fr}.card{min-height:0;flex-direction:row;align-items:center;padding:16px}.card .tag{margin-top:0;margin-left:auto}}
+  @media(max-width:650px){.home{padding:calc(env(safe-area-inset-top) + 22px) 20px 70px}.brandbar{margin-bottom:36px}.phasepick{margin-top:34px}.card{padding:17px}}
 
   /* ---------- EXERCISE ---------- */
   .ex{position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;z-index:20;
@@ -102,7 +105,7 @@
   .gauge{position:absolute;z-index:5;left:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
     border-radius:16px;padding:14px 16px;min-width:128px;color:#fff;transition:.2s}
-  .gauge.inrange{background:rgba(47,125,91,.42);border-color:rgba(120,230,170,.5)}
+  .gauge.inrange{background:rgba(241,90,41,.4);border-color:rgba(255,187,137,.6)}
   .gauge .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
   .gauge .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
   .gauge .val sup{font-size:18px;vertical-align:super;opacity:.7;margin-left:1px}
@@ -123,7 +126,7 @@
     display:flex;align-items:center;gap:12px;min-height:62px}
   .coach .dot{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:0 0 auto;
     box-shadow:0 0 0 0 rgba(192,144,42,.4);animation:pulse 1.6s infinite}
-  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(47,125,91,.4)}
+  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(241,90,41,.4)}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,144,42,.35)}70%{box-shadow:0 0 0 9px rgba(192,144,42,0)}100%{box-shadow:0 0 0 0 rgba(192,144,42,0)}}
   .coach .msg{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--ink)}
   .coach .msg b{font-weight:700}
@@ -131,8 +134,14 @@
   /* target band on the side */
   .target{position:absolute;z-index:4;top:50%;right:14px;transform:translateY(-50%);
     width:8px;height:200px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
-  .target .band{position:absolute;left:0;right:0;background:rgba(47,125,91,.55);border-top:1px solid #7ee6aa;border-bottom:1px solid #7ee6aa}
+  .target .band{position:absolute;left:0;right:0;background:rgba(241,90,41,.55);border-top:1px solid #ffc19e;border-bottom:1px solid #ffc19e}
   .target .needle{position:absolute;left:-3px;right:-3px;height:3px;background:var(--pulse);border-radius:2px;transition:.12s}
+
+  .joint-angle{position:absolute;z-index:6;display:none;min-width:72px;padding:7px 10px;border-radius:9px;
+    background:rgba(36,35,41,.86);color:#fff;box-shadow:0 3px 12px rgba(0,0,0,.18);pointer-events:none}
+  .joint-angle .value{display:block;font-size:21px;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums}
+  .joint-angle .label{display:block;margin-top:2px;font-size:10px;letter-spacing:.04em}
+  .joint-angle.estimated{background:rgba(36,35,41,.56)}
 
   /* loading / permission */
   .veil{position:absolute;inset:0;z-index:8;background:var(--ink);display:flex;flex-direction:column;
@@ -183,8 +192,8 @@
   <!-- ===================== HOME ===================== -->
   <main class="home" id="home">
     <div class="brandbar">
-      <img class="mark" src="assets/kneepath-icon.png" alt="">
-      <div><b>KneePath</b><span>Prototype</span></div>
+      <img class="mark" src="assets/nextstep-icon.png" alt="">
+      <div><b>NextStep</b><span>Total Knee Replacement - Guided Rehabilitation</span></div>
     </div>
 
     <section class="hero">
@@ -205,9 +214,9 @@
     <section class="list" id="list"><!-- exercises injected --></section>
 
     <div class="safety">
-      <b>When to get advice.</b> Use the exercises recommended by your physiotherapist. Stop if an exercise is very painful or causes a marked increase in swelling, and ask your physiotherapist or medical team for advice before continuing. Seek urgent medical advice if you have a fever, wound discharge or a painful, swollen calf. This app is general guidance and does not replace your own care plan. <a href="https://www.nhs.uk/tests-and-treatments/knee-replacement/complications/" target="_blank" rel="noopener noreferrer">NHS advice</a>
+      <b>When to get advice.</b> Follow your physiotherapist's exercise plan. Stop and ask for advice if an exercise is very painful or swelling worsens. Seek urgent medical help for fever, wound discharge or a painful, swollen calf. This guide does not replace your care plan. <a href="https://www.nhs.uk/tests-and-treatments/knee-replacement/complications/" target="_blank" rel="noopener noreferrer">NHS advice</a>
     </div>
-    <footer class="sitefooter">© 2026 Vivek and Matt McCann. <a href="LICENSE">MIT licence</a>.</footer>
+    <footer class="sitefooter">© 2026 NextStep contributors. <a href="LICENSE">MIT licence</a>.</footer>
   </main>
 
   <!-- ===================== EXERCISE OVERLAY ===================== -->
@@ -215,6 +224,7 @@
     <div class="stage">
       <video id="vid" playsinline muted></video>
       <canvas class="cv" id="cv"></canvas>
+      <div class="joint-angle" id="jointAngle" aria-live="off"><span class="value" id="jointAngleValue">?</span><span class="label" id="jointAngleLabel">Knee angle</span></div>
 
       <div class="exhead">
         <button class="back" id="back" aria-label="Close exercise">‹</button>
@@ -353,10 +363,11 @@ const ICONS={
 const PHASE_NAME={1:'Phase I · Week 0 to 1',2:'Phase II · Week 1 to 4',3:'Phase III · Week 4 to 8',4:'Phase IV · Week 8+'};
 
 /* ---------------- State ---------------- */
-let phase=1, current=null, landmarker=null, running=false, rafId=null;
+let phase=1, current=null, landmarker=null, running=false, sessionActive=false, rafId=null;
 let lastVideoTime=-1;
 let peak=0, reps=0, repPhase='ready', holdStart=0, inRangeStart=0, completed=false;
 let smoothAngle=null;
+let poseFrames=[], lastPose=null, lastPoseAt=0, trackedSide=null;
 
 const $=id=>document.getElementById(id);
 
@@ -364,7 +375,8 @@ const $=id=>document.getElementById(id);
 function renderList(){
   const list=$('list'); list.innerHTML='';
   LIB[phase].forEach(ex=>{
-    const el=document.createElement('div');
+    const el=document.createElement('button');
+    el.type='button';
     el.className='card tracked';
     el.innerHTML=`
       <div class="ic"><svg viewBox="0 0 24 24">${ICONS[ex.icon]}</svg></div>
@@ -393,14 +405,16 @@ async function ensureModel(){
     },
     runningMode:"VIDEO",
     numPoses:1,
-    minPoseDetectionConfidence:0.5,
-    minTrackingConfidence:0.5
+    minPoseDetectionConfidence:0.3,
+    minPosePresenceConfidence:0.3,
+    minTrackingConfidence:0.3
   });
 }
 
 /* ---------------- Open / brief ---------------- */
 function openExercise(ex){
   current=ex; completed=false;
+  poseFrames=[];lastPose=null;lastPoseAt=0;trackedSide=null;lastVideoTime=-1;sessionActive=false;
   $('exTitle').textContent=ex.title;
   $('exPhase').textContent=PHASE_NAME[phase].split('·')[0].trim();
   $('briefTitle').textContent=ex.title;
@@ -419,8 +433,9 @@ function openExercise(ex){
 
 $('back').onclick=closeExercise;
 function closeExercise(){
-  running=false; if(rafId)cancelAnimationFrame(rafId);
+  running=false;sessionActive=false; if(rafId)cancelAnimationFrame(rafId);
   const v=$('vid'); if(v.srcObject){v.srcObject.getTracks().forEach(t=>t.stop());v.srcObject=null;}
+  $('jointAngle').style.display='none';
   $('ex').classList.remove('open');
 }
 
@@ -437,6 +452,7 @@ async function startCamera(){
     const v=$('vid'); v.srcObject=stream; await v.play();
     $('veil').classList.add('hide');
     $('brief').classList.add('up');   // show instructions over the live feed
+    running=true;loop();
   }catch(err){
     $('spin').style.display='none';
     $('veilTitle').textContent='Camera needed';
@@ -456,7 +472,7 @@ $('briefStart').onclick=()=>{
   $('gaugeLab').textContent=current.gaugeLab;
   $('repGoal').textContent=current.reps||'';
   setupTargetBand();
-  running=true; loop();
+  sessionActive=true;
 };
 
 function resetSession(){
@@ -488,12 +504,28 @@ function angle(a,b,c){ // angle at b in degrees
   const m=Math.hypot(ab.x,ab.y)*Math.hypot(cb.x,cb.y)||1e-6;
   return Math.acos(Math.max(-1,Math.min(1,dot/m)))*180/Math.PI;
 }
-function vis(lm,i){return lm[i] && (lm[i].visibility===undefined||lm[i].visibility>0.4);}
+function vis(lm,i){return lm[i] && Number.isFinite(lm[i].x) && Number.isFinite(lm[i].y) && (lm[i].visibility===undefined||lm[i].visibility>0.25);}
 // Landmark indices: 23/24 hip, 25/26 knee, 27/28 ankle, 11/12 shoulder
 function pickSide(lm){
   const r=(lm[24]?.visibility||0)+(lm[26]?.visibility||0)+(lm[28]?.visibility||0);
   const l=(lm[23]?.visibility||0)+(lm[25]?.visibility||0)+(lm[27]?.visibility||0);
-  return r>=l?{hip:24,knee:26,ankle:28,sho:12}:{hip:23,knee:25,ankle:27,sho:11};
+  if(trackedSide===null)trackedSide=r>=l?'right':'left';
+  else if(trackedSide==='right'&&l>r+0.55)trackedSide='left';
+  else if(trackedSide==='left'&&r>l+0.55)trackedSide='right';
+  return trackedSide==='right'?{hip:24,knee:26,ankle:28,sho:12}:{hip:23,knee:25,ankle:27,sho:11};
+}
+
+// A short rolling average steadies landmarks without delaying the image by many frames.
+function averagePose(lm){
+  poseFrames.push(lm);
+  if(poseFrames.length>4)poseFrames.shift();
+  return lm.map((point,i)=>{
+    const samples=poseFrames.map(frame=>frame[i]).filter(p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&(p.visibility===undefined||p.visibility>0.25));
+    if(!samples.length)return point;
+    return {x:samples.reduce((n,p)=>n+p.x,0)/samples.length,
+      y:samples.reduce((n,p)=>n+p.y,0)/samples.length,
+      visibility:point?.visibility??0};
+  });
 }
 
 /* ---------------- Main loop ---------------- */
@@ -509,9 +541,21 @@ function loop(){
       const res=landmarker.detectForVideo(v,now);
       ctx.clearRect(0,0,cv.width,cv.height);
       if(res.landmarks&&res.landmarks.length){
-        process(res.landmarks[0]);
+        const pose=averagePose(res.landmarks[0]);
+        lastPose=pose;lastPoseAt=now;
+        process(pose);
       }else{
-        coach(false,'Step back so your whole leg is in frame.');
+        if(lastPose&&now-lastPoseAt<650){
+          const side=pickSide(lastPose);
+          drawSkeleton(lastPose,side,false,true);
+          showJointAngle(lastPose,side,true);
+          if(sessionActive)coach(false,'Tracking your movement. Keep your leg in view.');
+        }else{
+          $('jointAngle').style.display='none';
+          poseFrames=[];
+          if(sessionActive)coach(false,'Move back until your hip, knee and ankle are in view.');
+        }
+        holdStart=0;
       }
     }
   }
@@ -521,8 +565,11 @@ function loop(){
 function process(lm){
   const s=pickSide(lm);
   const okJoints=vis(lm,s.hip)&&vis(lm,s.knee)&&vis(lm,s.ankle);
-  drawSkeleton(lm,s,okJoints);
-  if(!okJoints){coach(false,'Make sure your hip, knee and ankle are all visible.');return;}
+  drawSkeleton(lm,s,okJoints,false);
+  if(!okJoints){$('jointAngle').style.display='none';holdStart=0;if(sessionActive)coach(false,'Make sure your hip, knee and ankle are visible.');return;}
+
+  showJointAngle(lm,s,false);
+  if(!sessionActive)return;
 
   const kneeAngle=angle(lm[s.hip],lm[s.knee],lm[s.ankle]); // 180 = straight
   const t=current.trackType;
@@ -542,7 +589,7 @@ function process(lm){
 }
 
 /* smoothing */
-function smooth(v){ smoothAngle = smoothAngle==null? v : smoothAngle*0.6+v*0.4; return smoothAngle; }
+function smooth(v){ smoothAngle = smoothAngle==null? v : smoothAngle*0.35+v*0.65; return smoothAngle; }
 
 function handleMetric(raw,kind){
   const val=Math.round(smooth(raw));
@@ -602,27 +649,43 @@ function coach(ok,msg){
 
 /* ---------------- Skeleton overlay ---------------- */
 const BONES=[[11,12],[11,23],[12,24],[23,24],[23,25],[25,27],[27,31],[24,26],[26,28],[28,32]];
-function drawSkeleton(lm,s,ok){
+function drawSkeleton(lm,s,ok,estimated){
   const W=cv.width,H=cv.height;
   ctx.lineWidth=Math.max(3,W*0.006);
-  ctx.strokeStyle=ok?'rgba(232,100,47,.55)':'rgba(255,255,255,.32)';
+  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(255,166,108,.9)':'rgba(255,255,255,.5)');
   BONES.forEach(([a,b])=>{
-    if(!lm[a]||!lm[b])return;
+    if(!vis(lm,a)||!vis(lm,b))return;
     ctx.beginPath();ctx.moveTo(lm[a].x*W,lm[a].y*H);ctx.lineTo(lm[b].x*W,lm[b].y*H);ctx.stroke();
   });
   // highlight active joint
   [s.hip,s.knee,s.ankle].forEach((i,idx)=>{
-    if(!lm[i])return;
+    if(!vis(lm,i))return;
     ctx.beginPath();
     ctx.arc(lm[i].x*W,lm[i].y*H, idx===1?W*0.018:W*0.012,0,7);
-    ctx.fillStyle= idx===1 ? (ok?'#087c86':'#fff') : 'rgba(255,255,255,.85)';
+    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#ffab75') : 'rgba(255,255,255,.85)';
     ctx.fill();
   });
 }
 
+function showJointAngle(lm,s,estimated){
+  if(!vis(lm,s.hip)||!vis(lm,s.knee)||!vis(lm,s.ankle)){$('jointAngle').style.display='none';return;}
+  const badge=$('jointAngle'), stage=$('ex').querySelector('.stage');
+  const width=stage.clientWidth,height=stage.clientHeight;
+  const scale=Math.max(width/cv.width,height/cv.height);
+  const cropX=(cv.width*scale-width)/2,cropY=(cv.height*scale-height)/2;
+  const knee=lm[s.knee];
+  const x=width-(knee.x*cv.width*scale-cropX),y=knee.y*cv.height*scale-cropY;
+  badge.style.left=Math.max(10,Math.min(width-90,x+18))+'px';
+  badge.style.top=Math.max(85,Math.min(height-70,y-15))+'px';
+  $('jointAngleValue').textContent=Math.round(angle(lm[s.hip],knee,lm[s.ankle]))+'°';
+  $('jointAngleLabel').textContent=estimated?'Estimate':'Knee angle';
+  badge.classList.toggle('estimated',estimated);
+  badge.style.display='block';
+}
+
 /* ---------------- Finish ---------------- */
 function finish(){
-  completed=true; running=false; if(rafId)cancelAnimationFrame(rafId);
+  completed=true; sessionActive=false;
   navigator.vibrate&&navigator.vibrate([40,60,40]);
   $('doneSub').textContent=`${current.title}. ${reps} reps logged.`;
   const unit=current.trackType==='flexion'?'bend':(current.trackType==='slr'?'lift':'straightness');
