@@ -6,19 +6,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#fffdf8">
 <title>NextStep | Total Knee Replacement Rehabilitation</title>
-<link rel="icon" type="image/png" href="assets/nextstep-icon-burgundy.png">
+<link rel="icon" type="image/png" href="assets/nextstep-icon-muted-red.png">
 <style>
   :root{
     --ink:#1b1b1d;
     --ink-2:#39383c;
     --paper:#fffdf8;
-    --paper-2:#f7edef;
-    --line:#e9dedc;
+    --paper-2:#f9eeeb;
+    --line:#eadedb;
     --bone:#ffffff;
-    --pulse:#a34a4d;
-    --pulse-deep:#783138;
-    --go:#a34a4d;
-    --go-soft:#f7edef;
+    --pulse:#ae5e50;
+    --pulse-deep:#874438;
+    --go:#ae5e50;
+    --go-soft:#f9eeeb;
     --warn:#9b6b3b;
     --muted:#4e4b50;
     --shadow:0 6px 18px rgba(67,40,28,.08);
@@ -58,18 +58,18 @@
   .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;box-shadow:var(--shadow)}
   .seg button{flex:1;min-width:0;min-height:54px;border:0;background:transparent;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);
     padding:8px 3px;border-radius:10px;cursor:pointer;transition:.18s}
-  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(163,74,77,.2)}
+  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(174,94,80,.2)}
 
   .list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
   .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;
     display:flex;flex-direction:row;align-items:center;gap:12px;min-height:0;transition:.16s;position:relative;overflow:hidden;
     width:100%;font:inherit;color:inherit;text-align:left}
-  .card:hover{border-color:#d4a2a7;box-shadow:var(--shadow)}
+  .card:hover{border-color:#d8aaa1;box-shadow:var(--shadow)}
   .card:focus-visible,.seg button:focus-visible{outline:3px solid var(--pulse);outline-offset:2px}
   .card:active{transform:scale(.985)}
-  .card .ic{width:52px;height:52px;flex:0 0 auto;border-radius:10px;background:var(--paper-2);
-    display:grid;place-items:center}
-  .card .ic svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .card .ic{width:52px;height:52px;flex:0 0 auto;border-radius:12px;background:var(--pulse);
+    display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+  .card .ic svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:3.7;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin:0 0 4px;font-size:18px;font-weight:700;letter-spacing:-.01em}
   .card p{margin:0;font-size:14px;color:var(--muted);line-height:1.4}
   .card .tag{margin-left:auto;font-size:11px;font-weight:750;letter-spacing:.04em;color:var(--pulse-deep);
@@ -98,22 +98,30 @@
   .exhead .back{width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.12);
     backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
   .exhead .t{color:#fff;padding-top:2px}
-  .exhead .t .eyebrow{color:#e8b9bd}
+  .exhead .t .eyebrow{color:#edc4bb}
   .exhead .t h2{margin:2px 0 0;font-size:18px;font-weight:650;font-family:inherit;letter-spacing:-.01em}
+
+  .overlay-mode{position:absolute;z-index:6;top:calc(env(safe-area-inset-top) + 88px);right:14px;
+    display:flex;gap:3px;padding:4px;border:1px solid rgba(255,255,255,.22);border-radius:12px;
+    background:rgba(10,17,29,.75);backdrop-filter:blur(10px)}
+  .overlay-mode button{min-width:52px;min-height:44px;padding:7px 9px;border:0;border-radius:9px;
+    background:transparent;color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .overlay-mode button[aria-pressed="true"]{background:var(--pulse)}
+  .overlay-mode button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
   /* big live angle gauge */
   .gauge{position:absolute;z-index:5;left:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
-    border-radius:16px;padding:15px 16px;min-width:174px;color:#fff;transition:.2s}
-  .gauge.inrange{background:rgba(163,74,77,.5);border-color:rgba(232,185,189,.7)}
+    border-radius:14px;padding:10px 12px;min-width:150px;color:#fff;transition:.2s}
+  .gauge.inrange{background:rgba(174,94,80,.5);border-color:rgba(237,196,187,.7)}
   .gauge .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
-  .gauge .val{font-size:58px;font-weight:700;line-height:1;margin-top:4px;font-family:inherit}
-  .gauge .val sup{font-size:18px;vertical-align:super;opacity:.7;margin-left:1px}
+  .gauge .val{font-size:50px;font-weight:700;line-height:1;margin-top:2px;font-family:inherit}
+  .gauge .val sup{font-size:16px;vertical-align:super;opacity:.7;margin-left:1px}
   .gauge .sub{font-size:11px;opacity:.8;margin-top:5px}
-  .gauge .bests{border-top:1px solid rgba(255,255,255,.2);margin-top:10px;padding-top:8px;display:grid;gap:4px}
-  .gauge .bests div{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:11px;color:#f4d1d4}
-  .gauge .bests b{font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
-  .gauge .bests small{display:block;font-size:10px;color:rgba(255,255,255,.7)}
+  .gauge .bests{border-top:1px solid rgba(255,255,255,.2);margin-top:6px;padding-top:5px;display:grid;gap:2px}
+  .gauge .bests div{display:flex;align-items:baseline;justify-content:space-between;gap:6px;font-size:10px;color:#f5d6cf}
+  .gauge .bests b{font-size:13px;color:#fff;font-variant-numeric:tabular-nums}
+  .gauge .bests small{display:block;font-size:9px;color:rgba(255,255,255,.7)}
 
   /* rep counter pill */
   .reps{position:absolute;z-index:5;right:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
@@ -132,7 +140,7 @@
     display:flex;align-items:center;gap:12px;min-height:62px}
   .coach .dot{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:0 0 auto;
     box-shadow:0 0 0 0 rgba(192,144,42,.4);animation:pulse 1.6s infinite}
-  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(163,74,77,.4)}
+  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(174,94,80,.4)}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,144,42,.35)}70%{box-shadow:0 0 0 9px rgba(192,144,42,0)}100%{box-shadow:0 0 0 0 rgba(192,144,42,0)}}
   .coach .msg{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--ink)}
   .coach .msg b{font-weight:700}
@@ -140,7 +148,7 @@
   /* target band on the side */
   .target{position:absolute;z-index:4;top:50%;right:14px;transform:translateY(-50%);
     width:12px;height:200px;border-radius:6px;background:rgba(255,255,255,.2);overflow:hidden}
-  .target .band{position:absolute;left:0;right:0;background:rgba(163,74,77,.55);border-top:1px solid #e8b9bd;border-bottom:1px solid #e8b9bd}
+  .target .band{position:absolute;left:0;right:0;background:rgba(174,94,80,.55);border-top:1px solid #edc4bb;border-bottom:1px solid #edc4bb}
   .target .needle{position:absolute;left:0;right:0;height:4px;background:#fff;border-radius:2px;transition:.12s}
 
   .joint-angle{position:absolute;z-index:6;display:none;min-width:72px;padding:7px 10px;border-radius:9px;
@@ -148,6 +156,10 @@
   .joint-angle .value{display:block;font-size:21px;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums}
   .joint-angle .label{display:block;margin-top:2px;font-size:10px;letter-spacing:.04em}
   .joint-angle.estimated{background:rgba(36,35,41,.56)}
+  .joint-angle.knee-only{min-width:0;padding:0;background:transparent;box-shadow:none;
+    text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.85)}
+  .joint-angle.knee-only .value{font-size:25px;font-weight:800}
+  .joint-angle.knee-only .label{display:none}
 
   /* loading / permission */
   .veil{position:absolute;inset:0;z-index:8;background:var(--ink);display:flex;flex-direction:column;
@@ -185,12 +197,12 @@
   .done h2{color:#fff;font-family:inherit;font-size:26px;margin:0;font-weight:600}
   .done p{color:rgba(255,255,255,.75);font-size:14px;margin:2px 0 0}
   .done .stat{color:#fff;font-size:14px;margin-top:12px;opacity:.9}
-  .done .stat b{color:#e8b9bd;font-size:18px}
+  .done .stat b{color:#edc4bb;font-size:18px}
   .done button{margin-top:22px;background:var(--pulse);color:#fff;border:none;font-family:inherit;
     font-size:15px;font-weight:650;padding:14px 30px;border-radius:13px;cursor:pointer}
 
-  @media(max-width:360px){.gauge{min-width:156px;padding:13px}.gauge .val,.reps .val{font-size:50px}.reps{min-width:96px;padding:13px 10px}}
-  @media(max-height:620px){.gauge,.reps{bottom:calc(env(safe-area-inset-bottom) + 100px)}.target{top:82px;right:14px;height:90px;transform:none}}
+  @media(max-width:360px){.gauge{min-width:140px;padding:9px 10px}.gauge .val{font-size:46px}.reps .val{font-size:50px}.reps{min-width:96px;padding:13px 10px}}
+  @media(max-height:620px){.gauge,.reps{bottom:calc(env(safe-area-inset-bottom) + 100px)}.target{top:82px;right:14px;height:90px;transform:none}.overlay-mode{top:12px;right:12px}}
 
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -201,7 +213,7 @@
   <!-- ===================== HOME ===================== -->
   <main class="home" id="home">
     <div class="brandbar">
-      <img class="mark" src="assets/nextstep-icon-burgundy.png" alt="">
+      <img class="mark" src="assets/nextstep-icon-muted-red.png" alt="">
       <div><b>NextStep</b><span>Total Knee Replacement - Guided Rehabilitation</span></div>
     </div>
 
@@ -240,6 +252,12 @@
         <div class="t"><span class="eyebrow" id="exPhase">Phase I</span><h2 id="exTitle">Exercise</h2></div>
       </div>
 
+      <div class="overlay-mode" id="overlayMode" role="group" aria-label="Tracking overlay">
+        <button type="button" data-overlay="full" aria-pressed="true">Full</button>
+        <button type="button" data-overlay="knee" aria-pressed="false">Knee</button>
+        <button type="button" data-overlay="off" aria-pressed="false">Off</button>
+      </div>
+
       <div class="target" id="targetUI" style="display:none">
         <div class="band" id="band"></div>
         <div class="needle" id="needle" style="bottom:0"></div>
@@ -251,7 +269,7 @@
         <div class="bests">
           <div><span>Best flexion</span><b><span id="bestFlexVal">?</span>°</b></div>
           <div><span>Best extension</span><b><span id="bestExtVal">?</span>°</b></div>
-          <small>Extension: 0° means straight</small>
+          <small>0° = straight</small>
         </div>
       </div>
 
@@ -369,10 +387,10 @@ const LIB = {
 };
 
 const ICONS={
-  flex:'<path d="M5 19V5M5 12h9a4 4 0 0 0 4-4"/>',
-  slide:'<path d="M4 17h7l5-9M4 17l3-3"/><circle cx="17" cy="6" r="2"/>',
-  lift:'<path d="M5 20V8M5 8l5 3 9-5"/><circle cx="5" cy="5" r="2"/>',
-  squat:'<path d="M8 4v6l-3 9M16 4v6l3 9M8 10h8"/>'
+  flex:'<path d="M3 13l7 2M16 15l6-3"/><circle cx="13" cy="15" r="3.4" fill="var(--pulse)" stroke="none"/><circle cx="13" cy="15" r="2.1" fill="#fff" stroke="none"/>',
+  slide:'<path d="M3 19h6M15 16l6-9"/><circle cx="12" cy="18" r="3.4" fill="var(--pulse)" stroke="none"/><circle cx="12" cy="18" r="2.1" fill="#fff" stroke="none"/>',
+  lift:'<path d="M3 21l7-7M16 10l6-6"/><circle cx="13" cy="12" r="3.4" fill="var(--pulse)" stroke="none"/><circle cx="13" cy="12" r="2.1" fill="#fff" stroke="none"/>',
+  squat:'<path d="M4 3l3 8M9 17l-3 5M20 3l-3 8M15 17l3 5"/><circle cx="8" cy="14" r="3.1" fill="var(--pulse)" stroke="none"/><circle cx="8" cy="14" r="1.9" fill="#fff" stroke="none"/><circle cx="16" cy="14" r="3.1" fill="var(--pulse)" stroke="none"/><circle cx="16" cy="14" r="1.9" fill="#fff" stroke="none"/>'
 };
 const PHASE_NAME={1:'Phase I · Week 0 to 1',2:'Phase II · Week 1 to 4',3:'Phase III · Week 4 to 8',4:'Phase IV · Week 8+'};
 
@@ -382,6 +400,7 @@ let lastVideoTime=-1;
 let reps=0, repPhase='ready', holdStart=0, returnStart=0, completed=false;
 let smoothAngle=null, smoothKneeAngle=null, bestFlexion=null, bestExtension=null;
 let poseFrames=[], lastPose=null, lastPoseAt=0, trackedSide=null;
+let overlayMode='full';
 
 const $=id=>document.getElementById(id);
 
@@ -710,10 +729,72 @@ function coach(ok,msg){
 
 /* ---------------- Skeleton overlay ---------------- */
 const BONES=[[11,12],[11,23],[12,24],[23,24],[23,25],[25,27],[27,31],[24,26],[26,28],[28,32]];
+const overlayAccent=getComputedStyle(document.documentElement).getPropertyValue('--pulse').trim()||'#ae5e50';
+$('overlayMode').addEventListener('click',event=>{
+  const button=event.target.closest('button[data-overlay]');
+  if(!button)return;
+  overlayMode=button.dataset.overlay;
+  $('overlayMode').querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  ctx.clearRect(0,0,cv.width,cv.height);
+  $('jointAngle').style.display='none';
+  if(overlayMode==='off'||!lastPose||performance.now()-lastPoseAt>=650)return;
+  const side=pickSide(lastPose);
+  const ok=vis(lastPose,side.hip)&&vis(lastPose,side.knee)&&vis(lastPose,side.ankle);
+  drawSkeleton(lastPose,side,ok,false);
+  showJointAngle(lastPose,side,false);
+});
+
+function drawKneeOnly(lm,s,estimated){
+  if(!vis(lm,s.hip)||!vis(lm,s.knee)||!vis(lm,s.ankle))return;
+  const W=cv.width,H=cv.height;
+  const point=index=>({x:lm[index].x*W,y:lm[index].y*H});
+  const hip=point(s.hip),knee=point(s.knee),ankle=point(s.ankle);
+  const inner=Math.max(4,W*.008),outer=inner+4;
+  ctx.save();
+  ctx.globalAlpha=estimated ? 0.5 : 1;
+  ctx.lineCap='round';ctx.lineJoin='round';
+  for(const [from,to] of [[hip,knee],[knee,ankle]]){
+    ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.lineTo(to.x,to.y);
+    ctx.lineWidth=outer;ctx.strokeStyle='rgba(10,17,29,.9)';ctx.stroke();
+    ctx.lineWidth=inner;ctx.strokeStyle=overlayAccent;ctx.stroke();
+  }
+  const shinX=ankle.x-knee.x,shinY=ankle.y-knee.y;
+  const shinLength=Math.hypot(shinX,shinY);
+  if(shinLength>1){
+    const referenceLength=Math.max(60,Math.min(W,H)*.14);
+    ctx.beginPath();ctx.moveTo(knee.x,knee.y);
+    ctx.lineTo(knee.x-shinX/shinLength*referenceLength,knee.y-shinY/shinLength*referenceLength);
+    ctx.setLineDash([8,6]);ctx.lineWidth=Math.max(2,W*.004);
+    ctx.strokeStyle='#fff';ctx.shadowColor='rgba(0,0,0,.9)';ctx.shadowBlur=3;ctx.stroke();
+    ctx.setLineDash([]);
+    const start=Math.atan2(hip.y-knee.y,hip.x-knee.x);
+    const reference=Math.atan2(-shinY,-shinX);
+    let sweep=reference-start;
+    while(sweep>Math.PI)sweep-=2*Math.PI;
+    while(sweep<-Math.PI)sweep+=2*Math.PI;
+    const radius=Math.max(28,Math.min(W,H)*.065);
+    ctx.beginPath();
+    for(let step=0;step<=16;step++){
+      const theta=start+sweep*step/16;
+      const x=knee.x+Math.cos(theta)*radius,y=knee.y+Math.sin(theta)*radius;
+      if(step===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.lineWidth=Math.max(3,W*.005);ctx.stroke();
+  }
+  ctx.shadowBlur=0;
+  for(const joint of [hip,knee,ankle]){
+    ctx.beginPath();ctx.arc(joint.x,joint.y,Math.max(7,W*.014),0,Math.PI*2);
+    ctx.fillStyle='#fff';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=overlayAccent;ctx.stroke();
+  }
+  ctx.restore();
+}
+
 function drawSkeleton(lm,s,ok,estimated){
+  if(overlayMode==='off')return;
+  if(overlayMode==='knee'){drawKneeOnly(lm,s,estimated);return;}
   const W=cv.width,H=cv.height;
   ctx.lineWidth=Math.max(3,W*0.006);
-  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(232,185,189,.9)':'rgba(255,255,255,.5)');
+  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(237,196,187,.9)':'rgba(255,255,255,.5)');
   BONES.forEach(([a,b])=>{
     if(!vis(lm,a)||!vis(lm,b))return;
     ctx.beginPath();ctx.moveTo(lm[a].x*W,lm[a].y*H);ctx.lineTo(lm[b].x*W,lm[b].y*H);ctx.stroke();
@@ -723,24 +804,28 @@ function drawSkeleton(lm,s,ok,estimated){
     if(!vis(lm,i))return;
     ctx.beginPath();
     ctx.arc(lm[i].x*W,lm[i].y*H, idx===1?W*0.018:W*0.012,0,7);
-    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#e8b9bd') : 'rgba(255,255,255,.85)';
+    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#edc4bb') : 'rgba(255,255,255,.85)';
     ctx.fill();
   });
 }
 
 function showJointAngle(lm,s,estimated){
-  if(!vis(lm,s.hip)||!vis(lm,s.knee)||!vis(lm,s.ankle)){$('jointAngle').style.display='none';return;}
+  if(overlayMode==='off'||!vis(lm,s.hip)||!vis(lm,s.knee)||!vis(lm,s.ankle)){$('jointAngle').style.display='none';return;}
   const badge=$('jointAngle'), stage=$('ex').querySelector('.stage');
   const width=stage.clientWidth,height=stage.clientHeight;
   const scale=Math.max(width/cv.width,height/cv.height);
   const cropX=(cv.width*scale-width)/2,cropY=(cv.height*scale-height)/2;
   const knee=lm[s.knee];
   const x=width-(knee.x*cv.width*scale-cropX),y=knee.y*cv.height*scale-cropY;
-  badge.style.left=Math.max(10,Math.min(width-90,x+18))+'px';
-  badge.style.top=Math.max(85,Math.min(height-70,y-15))+'px';
+  const hipX=width-(lm[s.hip].x*cv.width*scale-cropX);
+  const kneeOnly=overlayMode==='knee';
+  const offsetX=kneeOnly?(hipX<x?-86:30):18;
+  badge.style.left=Math.max(10,Math.min(width-90,x+offsetX))+'px';
+  badge.style.top=Math.max(85,Math.min(height-70,y+(kneeOnly?-42:-15)))+'px';
   $('jointAngleValue').textContent=Math.round(180-angle(lm[s.hip],knee,lm[s.ankle],cv.width,cv.height))+'°';
   $('jointAngleLabel').textContent=estimated?'Estimated bend':'Knee bend';
   badge.classList.toggle('estimated',estimated);
+  badge.classList.toggle('knee-only',kneeOnly);
   badge.style.display='block';
 }
 
