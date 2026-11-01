@@ -6,19 +6,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#fffdf8">
 <title>NextStep | Total Knee Replacement Rehabilitation</title>
-<link rel="icon" type="image/png" href="assets/nextstep-icon-clay.png">
+<link rel="icon" type="image/png" href="assets/nextstep-icon-burgundy.png">
 <style>
   :root{
     --ink:#1b1b1d;
     --ink-2:#39383c;
     --paper:#fffdf8;
-    --paper-2:#f8efec;
-    --line:#e8dfdb;
+    --paper-2:#f7edef;
+    --line:#e9dedc;
     --bone:#ffffff;
-    --pulse:#b8574b;
-    --pulse-deep:#963c35;
-    --go:#b8574b;
-    --go-soft:#f8efec;
+    --pulse:#a34a4d;
+    --pulse-deep:#783138;
+    --go:#a34a4d;
+    --go-soft:#f7edef;
     --warn:#9b6b3b;
     --muted:#4e4b50;
     --shadow:0 6px 18px rgba(67,40,28,.08);
@@ -58,14 +58,14 @@
   .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;box-shadow:var(--shadow)}
   .seg button{flex:1;min-width:0;min-height:54px;border:0;background:transparent;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);
     padding:8px 3px;border-radius:10px;cursor:pointer;transition:.18s}
-  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(184,87,75,.18)}
+  .seg button[aria-pressed="true"]{background:var(--pulse);color:#fff;box-shadow:0 2px 7px rgba(163,74,77,.2)}
 
   .list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
   .card{background:var(--bone);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;
     display:flex;flex-direction:row;align-items:center;gap:12px;min-height:0;transition:.16s;position:relative;overflow:hidden;
     width:100%;font:inherit;color:inherit;text-align:left}
-  .card:hover{border-color:#d4a49c;box-shadow:var(--shadow)}
-  .card:focus-visible,.seg button:focus-visible{outline:3px solid #d07062;outline-offset:2px}
+  .card:hover{border-color:#d4a2a7;box-shadow:var(--shadow)}
+  .card:focus-visible,.seg button:focus-visible{outline:3px solid var(--pulse);outline-offset:2px}
   .card:active{transform:scale(.985)}
   .card .ic{width:52px;height:52px;flex:0 0 auto;border-radius:10px;background:var(--paper-2);
     display:grid;place-items:center}
@@ -98,27 +98,33 @@
   .exhead .back{width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.12);
     backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
   .exhead .t{color:#fff;padding-top:2px}
-  .exhead .t .eyebrow{color:#f4b8ab}
+  .exhead .t .eyebrow{color:#e8b9bd}
   .exhead .t h2{margin:2px 0 0;font-size:18px;font-weight:650;font-family:inherit;letter-spacing:-.01em}
 
   /* big live angle gauge */
   .gauge{position:absolute;z-index:5;left:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
-    border-radius:16px;padding:14px 16px;min-width:128px;color:#fff;transition:.2s}
-  .gauge.inrange{background:rgba(184,87,75,.42);border-color:rgba(244,184,171,.6)}
+    border-radius:16px;padding:15px 16px;min-width:174px;color:#fff;transition:.2s}
+  .gauge.inrange{background:rgba(163,74,77,.5);border-color:rgba(232,185,189,.7)}
   .gauge .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
-  .gauge .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
+  .gauge .val{font-size:58px;font-weight:700;line-height:1;margin-top:4px;font-family:inherit}
   .gauge .val sup{font-size:18px;vertical-align:super;opacity:.7;margin-left:1px}
   .gauge .sub{font-size:11px;opacity:.8;margin-top:5px}
-  .gauge .peak{color:#f5d1cc}
+  .gauge .bests{border-top:1px solid rgba(255,255,255,.2);margin-top:10px;padding-top:8px;display:grid;gap:4px}
+  .gauge .bests div{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:11px;color:#f4d1d4}
+  .gauge .bests b{font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
+  .gauge .bests small{display:block;font-size:10px;color:rgba(255,255,255,.7)}
 
   /* rep counter pill */
   .reps{position:absolute;z-index:5;right:16px;bottom:calc(env(safe-area-inset-bottom) + 150px);
     background:rgba(10,17,29,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
-    border-radius:16px;padding:14px 16px;color:#fff;text-align:center;min-width:96px}
+    border-radius:16px;padding:15px 14px;color:#fff;text-align:center;min-width:110px}
   .reps .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;font-weight:700}
-  .reps .val{font-size:46px;font-weight:600;line-height:1;margin-top:4px;font-family:inherit}
+  .reps .val{font-size:58px;font-weight:700;line-height:1;margin-top:4px;font-family:inherit}
   .reps .val small{font-size:18px;opacity:.55}
+  .reps .rep-add{display:block;min-height:44px;min-width:88px;margin:10px auto 0;padding:8px 10px;border:0;border-radius:10px;background:var(--pulse);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+  .reps .rep-add[hidden]{display:none}
+  .reps .rep-add:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
   /* coaching strip */
   .coach{position:absolute;z-index:5;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 18px);
@@ -126,16 +132,16 @@
     display:flex;align-items:center;gap:12px;min-height:62px}
   .coach .dot{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:0 0 auto;
     box-shadow:0 0 0 0 rgba(192,144,42,.4);animation:pulse 1.6s infinite}
-  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(184,87,75,.4)}
+  .coach.ok .dot{background:var(--go);box-shadow:0 0 0 0 rgba(163,74,77,.4)}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,144,42,.35)}70%{box-shadow:0 0 0 9px rgba(192,144,42,0)}100%{box-shadow:0 0 0 0 rgba(192,144,42,0)}}
   .coach .msg{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--ink)}
   .coach .msg b{font-weight:700}
 
   /* target band on the side */
   .target{position:absolute;z-index:4;top:50%;right:14px;transform:translateY(-50%);
-    width:8px;height:200px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
-  .target .band{position:absolute;left:0;right:0;background:rgba(184,87,75,.55);border-top:1px solid #f4b8ab;border-bottom:1px solid #f4b8ab}
-  .target .needle{position:absolute;left:-3px;right:-3px;height:3px;background:var(--pulse);border-radius:2px;transition:.12s}
+    width:12px;height:200px;border-radius:6px;background:rgba(255,255,255,.2);overflow:hidden}
+  .target .band{position:absolute;left:0;right:0;background:rgba(163,74,77,.55);border-top:1px solid #e8b9bd;border-bottom:1px solid #e8b9bd}
+  .target .needle{position:absolute;left:0;right:0;height:4px;background:#fff;border-radius:2px;transition:.12s}
 
   .joint-angle{position:absolute;z-index:6;display:none;min-width:72px;padding:7px 10px;border-radius:9px;
     background:rgba(36,35,41,.86);color:#fff;box-shadow:0 3px 12px rgba(0,0,0,.18);pointer-events:none}
@@ -179,9 +185,12 @@
   .done h2{color:#fff;font-family:inherit;font-size:26px;margin:0;font-weight:600}
   .done p{color:rgba(255,255,255,.75);font-size:14px;margin:2px 0 0}
   .done .stat{color:#fff;font-size:14px;margin-top:12px;opacity:.9}
-  .done .stat b{color:#f4b8ab;font-size:18px}
+  .done .stat b{color:#e8b9bd;font-size:18px}
   .done button{margin-top:22px;background:var(--pulse);color:#fff;border:none;font-family:inherit;
     font-size:15px;font-weight:650;padding:14px 30px;border-radius:13px;cursor:pointer}
+
+  @media(max-width:360px){.gauge{min-width:156px;padding:13px}.gauge .val,.reps .val{font-size:50px}.reps{min-width:96px;padding:13px 10px}}
+  @media(max-height:620px){.gauge,.reps{bottom:calc(env(safe-area-inset-bottom) + 100px)}.target{top:82px;right:14px;height:90px;transform:none}}
 
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -192,7 +201,7 @@
   <!-- ===================== HOME ===================== -->
   <main class="home" id="home">
     <div class="brandbar">
-      <img class="mark" src="assets/nextstep-icon-clay.png" alt="">
+      <img class="mark" src="assets/nextstep-icon-burgundy.png" alt="">
       <div><b>NextStep</b><span>Total Knee Replacement - Guided Rehabilitation</span></div>
     </div>
 
@@ -239,12 +248,17 @@
       <div class="gauge" id="gauge" style="display:none">
         <div class="lab" id="gaugeLab">Knee bend</div>
         <div class="val"><span class="num" id="angleVal">?</span><sup>°</sup></div>
-        <div class="sub peak">Best <span class="num" id="peakVal">?</span>°</div>
+        <div class="bests">
+          <div><span>Best flexion</span><b><span id="bestFlexVal">?</span>°</b></div>
+          <div><span>Best extension</span><b><span id="bestExtVal">?</span>°</b></div>
+          <small>Extension: 0° means straight</small>
+        </div>
       </div>
 
       <div class="reps" id="repsUI" style="display:none">
         <div class="lab">Reps</div>
-        <div class="val"><span class="num" id="repVal">0</span><small>/<span class="num" id="repGoal">10</span></small></div>
+        <div class="val" aria-live="polite"><span class="num" id="repVal">0</span><small>/<span class="num" id="repGoal">10</span></small></div>
+        <button type="button" class="rep-add" id="repAdd" aria-label="Count one completed repetition" hidden>+1 rep</button>
       </div>
 
       <div class="coach" id="coach">
@@ -292,15 +306,15 @@ import {FilesetResolver, PoseLandmarker}
      'flexion'  -> measures knee bend angle, rep = bend past target then return
      'extension'-> measures how straight (180=full), success = hold near target
      'slr'      -> measures hip flexion (leg lift) with knee kept straight
-     'hold'     -> timed isometric / position hold, no rep counting
+     manualReps -> user counts holds that knee angle alone cannot verify
    side auto-detected from whichever leg is more visible.
 --------------------------------------------------- */
 const LIB = {
   1:[
-    {id:'quadset', icon:'flex', title:'Quad sets', tag:'Hold', trackType:'extension',
+    {id:'quadset', icon:'flex', title:'Quad sets', tag:'Hold', trackType:'extension', manualReps:true,
       blurb:'Wake up the thigh muscle and press the knee flat.',
       goal:160, holdSec:5, reps:10, gaugeLab:'Knee straightness',
-      steps:['Sit or lie with your operated leg out straight.','Tighten the thigh muscle to press the back of the knee down toward the bed.','Hold while the bar fills, then relax.','Aim for a strong, steady squeeze each time.']},
+      steps:['Sit or lie with your operated leg out straight.','Tighten the thigh muscle to press the back of the knee down toward the bed.','Hold for 5 seconds, then relax.','Tap +1 rep after each completed squeeze.']},
     {id:'heelslide', icon:'slide', title:'Heel slides', tag:'ROM', trackType:'flexion',
       blurb:'Gently rebuild your bend by sliding the heel toward you.',
       goal:110, reps:10, gaugeLab:'Knee bend',
@@ -347,10 +361,10 @@ const LIB = {
       blurb:'Deeper, controlled squats with even weight.',
       goal:90, reps:12, gaugeLab:'Knee bend',
       steps:['Stand sideways to the camera, feet hip-width.','Squat to around 90°, weight even on both legs.','Keep knees tracking over the toes.','Drive up through the heels to stand.']},
-    {id:'sls', icon:'lift', title:'Single-leg stance', tag:'Balance', trackType:'extension',
+    {id:'sls', icon:'lift', title:'Single-leg stance', tag:'Balance', trackType:'extension', manualReps:true,
       blurb:'Hold balance on the operated leg, knee soft and stable.',
       goal:165, holdSec:10, reps:5, gaugeLab:'Stance hold',
-      steps:['Stand facing the camera near a counter for safety.','Lift the good foot and balance on the operated leg.','Keep the standing knee straight but not locked hard.','Hold steady while the bar fills.']},
+      steps:['Stand facing the camera near a counter for safety.','Lift the good foot and balance on the operated leg.','Keep the standing knee straight but not locked hard.','After each 10-second hold, tap +1 rep.']},
   ]
 };
 
@@ -365,8 +379,8 @@ const PHASE_NAME={1:'Phase I · Week 0 to 1',2:'Phase II · Week 1 to 4',3:'Phas
 /* ---------------- State ---------------- */
 let phase=1, current=null, landmarker=null, running=false, sessionActive=false, rafId=null;
 let lastVideoTime=-1;
-let peak=0, reps=0, repPhase='ready', holdStart=0, inRangeStart=0, completed=false;
-let smoothAngle=null;
+let reps=0, repPhase='ready', holdStart=0, returnStart=0, completed=false;
+let smoothAngle=null, smoothKneeAngle=null, bestFlexion=null, bestExtension=null;
 let poseFrames=[], lastPose=null, lastPoseAt=0, trackedSide=null;
 
 const $=id=>document.getElementById(id);
@@ -414,6 +428,12 @@ async function ensureModel(){
 /* ---------------- Open / brief ---------------- */
 function openExercise(ex){
   current=ex; completed=false;
+  resetSession();
+  $('gauge').style.display='none';
+  $('targetUI').style.display='none';
+  $('repsUI').style.display='none';
+  $('repGoal').textContent=ex.reps||'';
+  $('repAdd').hidden=!ex.manualReps;
   poseFrames=[];lastPose=null;lastPoseAt=0;trackedSide=null;lastVideoTime=-1;sessionActive=false;
   $('exTitle').textContent=ex.title;
   $('exPhase').textContent=PHASE_NAME[phase].split('·')[0].trim();
@@ -468,16 +488,18 @@ $('briefStart').onclick=()=>{
   resetSession();
   $('gauge').style.display='block';
   $('targetUI').style.display='block';
-  if(current.reps && current.trackType!=='hold') $('repsUI').style.display='block';
-  $('gaugeLab').textContent=current.gaugeLab;
+  $('repsUI').style.display=current.reps?'block':'none';
+  $('gaugeLab').textContent='Knee bend';
   $('repGoal').textContent=current.reps||'';
   setupTargetBand();
   sessionActive=true;
 };
 
 function resetSession(){
-  peak=0;reps=0;repPhase='ready';holdStart=0;inRangeStart=0;completed=false;smoothAngle=null;
-  $('repVal').textContent='0'; $('peakVal').textContent='?'; $('angleVal').textContent='?';
+  reps=0;repPhase='ready';holdStart=0;returnStart=0;completed=false;smoothAngle=null;
+  smoothKneeAngle=null;bestFlexion=null;bestExtension=null;
+  $('repVal').textContent='0';$('angleVal').textContent='?';
+  $('bestFlexVal').textContent='?';$('bestExtVal').textContent='?';
 }
 
 /* target band geometry: map angle range to the vertical strip */
@@ -538,7 +560,7 @@ function loop(){
     if(cv.width!==v.videoWidth||cv.height!==v.videoHeight){
       cv.width=v.videoWidth;cv.height=v.videoHeight;
       poseFrames=[];lastPose=null;lastPoseAt=0;trackedSide=null;lastVideoTime=-1;
-      smoothAngle=null;holdStart=0;
+      smoothAngle=null;smoothKneeAngle=null;holdStart=0;returnStart=0;
       $('jointAngle').style.display='none';
     }
     const now=performance.now();
@@ -559,9 +581,10 @@ function loop(){
         }else{
           $('jointAngle').style.display='none';
           poseFrames=[];
+          smoothKneeAngle=null;returnStart=0;
           if(sessionActive)coach(false,'Move back until your hip, knee and ankle are in view.');
         }
-        holdStart=0;
+        holdStart=0;returnStart=0;
       }
     }
   }
@@ -572,12 +595,19 @@ function process(lm){
   const s=pickSide(lm);
   const okJoints=vis(lm,s.hip)&&vis(lm,s.knee)&&vis(lm,s.ankle);
   drawSkeleton(lm,s,okJoints,false);
-  if(!okJoints){$('jointAngle').style.display='none';holdStart=0;if(sessionActive)coach(false,'Make sure your hip, knee and ankle are visible.');return;}
+  if(!okJoints){$('jointAngle').style.display='none';holdStart=0;returnStart=0;if(sessionActive)coach(false,'Make sure your hip, knee and ankle are visible.');return;}
 
   showJointAngle(lm,s,false);
   if(!sessionActive)return;
 
   const kneeAngle=angle(lm[s.hip],lm[s.knee],lm[s.ankle],cv.width,cv.height); // 180 = straight
+  smoothKneeAngle=smoothKneeAngle==null?kneeAngle:smoothKneeAngle*0.35+kneeAngle*0.65;
+  const kneeBend=Math.max(0,Math.min(180,180-smoothKneeAngle));
+  $('angleVal').textContent=Math.round(kneeBend);
+  bestFlexion=bestFlexion==null?kneeBend:Math.max(bestFlexion,kneeBend);
+  bestExtension=bestExtension==null?kneeBend:Math.min(bestExtension,kneeBend);
+  $('bestFlexVal').textContent=Math.round(bestFlexion);
+  $('bestExtVal').textContent=Math.round(bestExtension);
   const t=current.trackType;
 
   if(t==='flexion'){
@@ -596,55 +626,80 @@ function process(lm){
 
 /* smoothing */
 function smooth(v){ smoothAngle = smoothAngle==null? v : smoothAngle*0.35+v*0.65; return smoothAngle; }
+function atStartFor(atStart, milliseconds=250){
+  if(!atStart){returnStart=0;return false;}
+  const now=performance.now();
+  if(!returnStart)returnStart=now;
+  return now-returnStart>=milliseconds;
+}
 
 function handleMetric(raw,kind){
   const val=Math.round(smooth(raw));
-  $('angleVal').textContent=val;
-  if(val>peak){peak=val;$('peakVal').textContent=peak;}
-  updateNeedle(kind==='bend'?val: (kind==='straight'?val:val));
+  updateNeedle(val);
   const inRange = val>=current.goal;
 
+  if(current.manualReps){
+    coach(inRange,`Tap +1 rep after each completed ${current.holdSec}-second hold.`);
+    return;
+  }
+
   if(current.holdSec){ // hold-based (extension/quad set/stance)
+    if(repPhase==='returning'){
+      if(atStartFor(val<current.goal-20)){
+        repPhase='ready';returnStart=0;
+        coach(false,'Ready for the next rep.');
+      }else{
+        coach(false,'Lower your leg to start the next rep.');
+      }
+      return;
+    }
     if(inRange){
       if(!holdStart)holdStart=performance.now();
       const held=(performance.now()-holdStart)/1000;
       coach(true,`Hold steady: <b>${held.toFixed(1)}s</b> / ${current.holdSec}s`);
-      if(held>=current.holdSec){ countRep(); holdStart=0; }
+      if(held>=current.holdSec){
+        countRep();holdStart=0;repPhase='returning';returnStart=0;
+        if(sessionActive)coach(true,'Rep counted. Lower your leg before the next one.');
+      }
     }else{
       holdStart=0;
       coach(false, kind==='straight'
-        ? 'Push the knee straighter to reach the green zone.'
-        : 'Move a little further into the green band.');
+        ? 'Push the knee straighter to reach the target zone.'
+        : 'Move a little further into the target band.');
     }
   }else{ // rep-based flexion
     if(inRange && repPhase==='ready'){
       coach(true,`Good. Return to ${kind==='bend'?'straight':'start'}.`);
-      repPhase='returning';
-    }else if(repPhase==='returning' && val < current.goal*0.35){
-      countRep(); repPhase='ready';
+      repPhase='returning';returnStart=0;
+    }else if(repPhase==='returning' && atStartFor(val<current.goal*0.35)){
+      countRep();repPhase='ready';returnStart=0;
     }else if(repPhase==='ready'){
-      coach(false, kind==='bend'?'Slide the heel in to reach the green zone.':'Move into the green zone.');
+      coach(false, kind==='bend'?'Slide the heel in to reach the target zone.':'Move into the target zone.');
     }
   }
 }
 
 function handleSLR(lift,kneeStraight){
   const val=Math.round(smooth(lift));
-  $('angleVal').textContent=val;
-  if(val>peak){peak=val;$('peakVal').textContent=peak;}
   updateNeedle(val);
   if(!kneeStraight){ coach(false,'Keep the knee <b>locked straight</b> as you lift.'); return; }
   const inRange=val>=current.goal;
-  if(inRange && repPhase==='ready'){ coach(true,'Good height. Lower slowly.'); repPhase='returning'; }
-  else if(repPhase==='returning' && val<8){ countRep(); repPhase='ready'; }
-  else if(repPhase==='ready'){ coach(true,'Keep your knee straight as you lift into the green zone.'); }
+  if(inRange && repPhase==='ready'){ coach(true,'Good height. Lower slowly.'); repPhase='returning';returnStart=0; }
+  else if(repPhase==='returning' && atStartFor(val<8)){ countRep(); repPhase='ready';returnStart=0; }
+  else if(repPhase==='ready'){ coach(true,'Keep your knee straight as you lift into the target zone.'); }
 }
 
 function countRep(){
+  if(!sessionActive||completed)return;
   reps++; $('repVal').textContent=reps;
   navigator.vibrate&&navigator.vibrate(30);
   if(current.reps && reps>=current.reps && !completed){ finish(); }
 }
+$('repAdd').onclick=()=>{
+  if(!current?.manualReps||!sessionActive||completed)return;
+  countRep();
+  if(sessionActive)coach(true,'Rep counted. Start your next hold when ready.');
+};
 
 /* ---------------- Coaching strip ---------------- */
 function coach(ok,msg){
@@ -658,7 +713,7 @@ const BONES=[[11,12],[11,23],[12,24],[23,24],[23,25],[25,27],[27,31],[24,26],[26
 function drawSkeleton(lm,s,ok,estimated){
   const W=cv.width,H=cv.height;
   ctx.lineWidth=Math.max(3,W*0.006);
-  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(244,184,171,.9)':'rgba(255,255,255,.5)');
+  ctx.strokeStyle=estimated?'rgba(255,255,255,.3)':(ok?'rgba(232,185,189,.9)':'rgba(255,255,255,.5)');
   BONES.forEach(([a,b])=>{
     if(!vis(lm,a)||!vis(lm,b))return;
     ctx.beginPath();ctx.moveTo(lm[a].x*W,lm[a].y*H);ctx.lineTo(lm[b].x*W,lm[b].y*H);ctx.stroke();
@@ -668,7 +723,7 @@ function drawSkeleton(lm,s,ok,estimated){
     if(!vis(lm,i))return;
     ctx.beginPath();
     ctx.arc(lm[i].x*W,lm[i].y*H, idx===1?W*0.018:W*0.012,0,7);
-    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#f4b8ab') : 'rgba(255,255,255,.85)';
+    ctx.fillStyle= idx===1 ? (estimated?'#fff':'#e8b9bd') : 'rgba(255,255,255,.85)';
     ctx.fill();
   });
 }
@@ -683,8 +738,8 @@ function showJointAngle(lm,s,estimated){
   const x=width-(knee.x*cv.width*scale-cropX),y=knee.y*cv.height*scale-cropY;
   badge.style.left=Math.max(10,Math.min(width-90,x+18))+'px';
   badge.style.top=Math.max(85,Math.min(height-70,y-15))+'px';
-  $('jointAngleValue').textContent=Math.round(angle(lm[s.hip],knee,lm[s.ankle],cv.width,cv.height))+'°';
-  $('jointAngleLabel').textContent=estimated?'Estimate':'Knee angle';
+  $('jointAngleValue').textContent=Math.round(180-angle(lm[s.hip],knee,lm[s.ankle],cv.width,cv.height))+'°';
+  $('jointAngleLabel').textContent=estimated?'Estimated bend':'Knee bend';
   badge.classList.toggle('estimated',estimated);
   badge.style.display='block';
 }
@@ -694,11 +749,17 @@ function finish(){
   completed=true; sessionActive=false;
   navigator.vibrate&&navigator.vibrate([40,60,40]);
   $('doneSub').textContent=`${current.title}. ${reps} reps logged.`;
-  const unit=current.trackType==='flexion'?'bend':(current.trackType==='slr'?'lift':'straightness');
-  $('doneStat').innerHTML=`Best ${unit} this set <b>${peak}°</b>`;
+  if(current.manualReps){
+    $('doneStat').textContent='Holds counted by you.';
+    $('done').classList.add('show');
+    return;
+  }
+  const flex=bestFlexion==null?'?':Math.round(bestFlexion)+'°';
+  const extension=bestExtension==null?'?':Math.round(bestExtension)+'°';
+  $('doneStat').textContent=`Best flexion ${flex}. Best extension ${extension} from straight.`;
   $('done').classList.add('show');
 }
-$('doneBtn').onclick=()=>{ const v=$('vid'); if(v.srcObject){v.srcObject.getTracks().forEach(t=>t.stop());v.srcObject=null;} $('ex').classList.remove('open'); };
+$('doneBtn').onclick=closeExercise;
 
 /* init */
 renderList();
