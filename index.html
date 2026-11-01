@@ -498,8 +498,9 @@ function updateNeedle(val){
 }
 
 /* ---------------- Geometry ---------------- */
-function angle(a,b,c){ // angle at b in degrees
-  const ab={x:a.x-b.x,y:a.y-b.y}, cb={x:c.x-b.x,y:c.y-b.y};
+function angle(a,b,c,width,height){ // angle at b in degrees, measured in image pixels
+  const ab={x:(a.x-b.x)*width,y:(a.y-b.y)*height};
+  const cb={x:(c.x-b.x)*width,y:(c.y-b.y)*height};
   const dot=ab.x*cb.x+ab.y*cb.y;
   const m=Math.hypot(ab.x,ab.y)*Math.hypot(cb.x,cb.y)||1e-6;
   return Math.acos(Math.max(-1,Math.min(1,dot/m)))*180/Math.PI;
@@ -571,7 +572,7 @@ function process(lm){
   showJointAngle(lm,s,false);
   if(!sessionActive)return;
 
-  const kneeAngle=angle(lm[s.hip],lm[s.knee],lm[s.ankle]); // 180 = straight
+  const kneeAngle=angle(lm[s.hip],lm[s.knee],lm[s.ankle],cv.width,cv.height); // 180 = straight
   const t=current.trackType;
 
   if(t==='flexion'){
@@ -581,7 +582,7 @@ function process(lm){
     handleMetric(kneeAngle,'straight');          // closer to 180 = straighter
   }else if(t==='slr'){
     // hip flexion = angle at hip between shoulder line and knee; approximate via thigh vs torso
-    const hipAngle=angle(lm[s.sho],lm[s.hip],lm[s.knee]); // 180 = leg in line with torso (flat)
+    const hipAngle=angle(lm[s.sho],lm[s.hip],lm[s.knee],cv.width,cv.height); // 180 = leg in line with torso (flat)
     const lift=180-hipAngle;                     // how far leg raised off the bed
     const kneeStraight=kneeAngle>155;
     handleSLR(lift,kneeStraight);
@@ -677,7 +678,7 @@ function showJointAngle(lm,s,estimated){
   const x=width-(knee.x*cv.width*scale-cropX),y=knee.y*cv.height*scale-cropY;
   badge.style.left=Math.max(10,Math.min(width-90,x+18))+'px';
   badge.style.top=Math.max(85,Math.min(height-70,y-15))+'px';
-  $('jointAngleValue').textContent=Math.round(angle(lm[s.hip],knee,lm[s.ankle]))+'°';
+  $('jointAngleValue').textContent=Math.round(angle(lm[s.hip],knee,lm[s.ankle],cv.width,cv.height))+'°';
   $('jointAngleLabel').textContent=estimated?'Estimate':'Knee angle';
   badge.classList.toggle('estimated',estimated);
   badge.style.display='block';
