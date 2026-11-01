@@ -534,8 +534,13 @@ const cv=$('cv'), ctx=cv.getContext('2d');
 function loop(){
   if(!running)return;
   const v=$('vid');
-  if(v.readyState>=2){
-    if(cv.width!==v.videoWidth){cv.width=v.videoWidth;cv.height=v.videoHeight;}
+  if(v.readyState>=2&&v.videoWidth>0&&v.videoHeight>0){
+    if(cv.width!==v.videoWidth||cv.height!==v.videoHeight){
+      cv.width=v.videoWidth;cv.height=v.videoHeight;
+      poseFrames=[];lastPose=null;lastPoseAt=0;trackedSide=null;lastVideoTime=-1;
+      smoothAngle=null;holdStart=0;
+      $('jointAngle').style.display='none';
+    }
     const now=performance.now();
     if(v.currentTime!==lastVideoTime){
       lastVideoTime=v.currentTime;
